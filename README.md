@@ -96,16 +96,4 @@ The application demonstrates three different sorting algorithms applied to the s
 4. Push to the branch (`git push origin feature/amazing-pattern`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Gang of Four for the original design patterns
-- The Java community for continuous improvements
-- All contributors to this repository
-
----
-
 **Happy Coding! 🎉**
