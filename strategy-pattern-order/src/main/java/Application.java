@@ -22,4 +22,4 @@ public class Application {
         order1.setCreditCardPayment(new MasterCardPayment());
         order1.pay();
     }
-} 
+}

@@ -1,0 +1,49 @@
+Strategy Design Pattern - Credit Card Payment UML Diagram
+=======================================================
+
+This file describes the UML class diagram for the Strategy Design Pattern 
+implementation in credit card payment processing.
+
+CLASS DIAGRAM STRUCTURE:
+=======================
+
+1. Order Class (Context)
+   - Fields: orderNumber, state, totalPrice
+   - Method: pay()
+   - Relationships: 
+     * Has 1 CreditCard (association)
+     * Has 1 CreditCardPayment strategy (association)
+     * Delegates payment to creditCardPayment.pay()
+
+2. CreditCard Class
+   - Fields: type, number, dateOfExpiry, cvvCode
+   - Constructor and getter methods
+
+3. CreditCardPayment Interface (Strategy)
+   - Method: pay() (abstract)
+   - Stereotype: <<interface>>
+
+4. VisaPayment Class (Concrete Strategy)
+   - Implements: CreditCardPayment
+   - Method: pay() - "Processing payment with Visa card"
+
+5. MasterCardPayment Class (Concrete Strategy)
+   - Implements: CreditCardPayment
+   - Method: pay() - "Processing payment with MasterCard"
+
+STRATEGY PATTERN ELEMENTS:
+=========================
+- Context: Order class
+- Strategy Interface: CreditCardPayment
+- Concrete Strategies: VisaPayment, MasterCardPayment
+- Delegation: Order.pay() delegates to creditCardPayment.pay()
+
+RELATIONSHIPS:
+==============
+- Order -> CreditCard (1:1 association)
+- Order -> CreditCardPayment (1:1 association)
+- VisaPayment -> CreditCardPayment (implements)
+- MasterCardPayment -> CreditCardPayment (implements)
+
+This diagram demonstrates how the Order class can use different payment 
+strategies without changing its own code, following the Strategy Pattern.
