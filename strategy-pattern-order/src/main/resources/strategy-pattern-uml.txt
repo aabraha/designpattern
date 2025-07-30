@@ -2,7 +2,7 @@ Strategy Design Pattern - Credit Card Payment UML Diagram
 =======================================================
 
 This file describes the UML class diagram for the Strategy Design Pattern 
-implementation in credit card payment processing.
+implementation in credit card payment processing. (strategy-order.png)
 
 CLASS DIAGRAM STRUCTURE:
 =======================

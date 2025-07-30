@@ -53,3 +53,4 @@ Order ORD-001 paid successfully. Total: $150.0
 ## UML Diagram
 
 See `src/main/resources/strategy-pattern-uml.txt` for the UML diagram description.
+See `src/main/resources/strategy-order.png` for the UML class diagram.
