@@ -17,6 +17,16 @@ designpattern/
 │   ├── QuickSort.java        # Concrete strategy
 │   ├── pom.xml              # Maven configuration
 │   └── README.md            # Pattern-specific documentation
+├── template-method-pattern-logger/ # Template Method Pattern implementation
+│   ├── src/main/java/com/template/
+│   │   ├── Logger.java              # Abstract base class with template method
+│   │   ├── ConsoleLogger.java       # Concrete implementation for console
+│   │   ├── FileLogger.java          # Concrete implementation for file
+│   │   ├── DatabaseLogger.java      # Concrete implementation for database
+│   │   ├── LogMessage.java          # Data model for log messages
+│   │   └── LoggerApplication.java   # Spring Boot application
+│   ├── pom.xml                      # Maven configuration
+│   └── README.md                    # Pattern-specific documentation
 └── README.md                # This file
 ```
 
@@ -42,7 +52,27 @@ java Application
 **Demo Output**:
 The application demonstrates three different sorting algorithms applied to the same product collection, showing how the Strategy pattern allows for flexible algorithm selection without modifying the core business logic.
 
-### 2. Factory Pattern
+### 2. Template Method Pattern
+**Location**: `template-method-pattern-logger/`
+
+The Template Method Pattern defines the skeleton of an algorithm in a base class, letting subclasses override specific steps without changing the algorithm's structure.
+
+**Key Components**:
+- `Logger` - Abstract base class with template method
+- `ConsoleLogger`, `FileLogger`, `DatabaseLogger` - Concrete implementations
+- `LogMessage` - Data model for log messages
+- `LoggerApplication` - Spring Boot application demonstrating the pattern
+
+**How to Run**:
+```bash
+cd template-method-pattern-logger
+mvn spring-boot:run
+```
+
+**Demo Output**:
+The application demonstrates how different loggers (Console, File, Database) follow the same template method structure but implement specific steps differently, showing the flexibility and consistency of the Template Method pattern.
+
+### 3. Factory Pattern
 **Location**: `factory-pattern/`
 
 *Coming soon...*
@@ -61,7 +91,13 @@ The application demonstrates three different sorting algorithms applied to the s
    java Application
    ```
 
-2. **Factory Pattern**:
+2. **Template Method Pattern**:
+   ```bash
+   cd template-method-pattern-logger
+   mvn spring-boot:run
+   ```
+
+3. **Factory Pattern**:
    ```bash
    cd factory-pattern
    # Instructions coming soon
