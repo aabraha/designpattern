@@ -1,6 +1,6 @@
 # Observer Pattern - Stock Monitoring System
 
-This project demonstrates the Observer Pattern implementation for a stock monitoring system using Spring Boot.
+This project demonstrates the Observer Pattern implementation for a stock monitoring system using Spring Boot, following the Single Responsibility Principle.
 
 ## Overview
 
@@ -10,20 +10,20 @@ The Observer Pattern defines a one-to-many dependency between objects so that wh
 
 Based on the UML diagram, the implementation includes:
 
-### Core Interfaces
-- **Subject**: Defines the contract for subjects that can be observed
+### Core Classes
+- **Subject (Abstract Class)**: Provides common observer management functionality
   - `addObserver(Observer observer)`: Register an observer
   - `removeObserver(Observer observer)`: Unregister an observer  
-  - `notifyObservers()`: Notify all registered observers
+  - `notifyObservers()`: Notify all registered observers (protected method)
 
-- **Observer**: Defines the contract for observers
+- **Observer (Interface)**: Defines the contract for observers
   - `update()`: Method called when subject changes
 
 ### Data Model
 - **Stock**: POJO with `stockName` and `value` attributes
 
 ### Concrete Implementation
-- **StockService**: Implements Subject interface
+- **StockService**: Extends Subject class and focuses on stock management
   - `changeStockValue(String stockName, double value)`: Changes stock value and notifies observers
   - `getChangedStock()`: Returns the most recently changed stock
 
@@ -35,9 +35,23 @@ Based on the UML diagram, the implementation includes:
 
 ## Key Benefits Demonstrated
 
-1. **Loose Coupling**: Subject depends only on Observer interface, not concrete implementations
-2. **Easy Extensibility**: New observers can be added without modifying the Subject
-3. **Automatic Notification**: All observers are notified automatically when stock values change
+1. **Single Responsibility Principle**: StockService focuses only on stock management, while Subject handles observer management
+2. **Loose Coupling**: Subject depends only on Observer interface, not concrete implementations
+3. **Easy Extensibility**: New observers can be added without modifying the Subject
+4. **Code Reuse**: Common observer management logic is in the abstract Subject class
+5. **Automatic Notification**: All observers are notified automatically when stock values change
+
+## Design Improvements
+
+### Inheritance Structure
+- **Subject** is now an abstract class providing common observer management
+- **StockService** extends Subject and focuses solely on stock operations
+- **Separation of Concerns**: Observer management vs. Stock management
+
+### Single Responsibility Principle
+- **Subject**: Responsible for observer registration and notification
+- **StockService**: Responsible for stock value changes and data management
+- **Observers**: Each responsible for their specific notification handling
 
 ## Running the Application
 
@@ -109,7 +123,8 @@ public class NewObserver implements Observer {
 
 ## Design Pattern Benefits
 
+- **Single Responsibility**: Each class has one clear responsibility
 - **Loose Coupling**: Subject and observers are loosely coupled
 - **Extensibility**: Easy to add new observers without changing existing code
-- **Reusability**: Observers can be reused in different contexts
+- **Reusability**: Common observer logic is reusable in other contexts
 - **Maintainability**: Changes to observers don't affect the subject

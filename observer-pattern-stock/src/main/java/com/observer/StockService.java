@@ -1,36 +1,14 @@
 package com.observer;
 
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * StockService - concrete implementation of Subject
- * Manages stock changes and notifies all registered observers
+ * StockService - concrete implementation that extends Subject
+ * Focuses solely on stock management responsibilities
  */
 @Service
-public class StockService implements Subject {
-    private List<Observer> observers = new ArrayList<>();
+public class StockService extends Subject {
     private Stock changedStock;
-    
-    @Override
-    public void addObserver(Observer observer) {
-        if (!observers.contains(observer)) {
-            observers.add(observer);
-        }
-    }
-    
-    @Override
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
-    }
-    
-    @Override
-    public void notifyObservers() {
-        for (Observer observer : observers) {
-            observer.update();
-        }
-    }
     
     /**
      * Changes the stock value and notifies all observers
@@ -40,7 +18,7 @@ public class StockService implements Subject {
     public void changeStockValue(String stockName, double value) {
         this.changedStock = new Stock(stockName, value);
         System.out.println("Stock value changed: " + changedStock);
-        notifyObservers();
+        notifyObservers(); // Calls the protected method from parent class
     }
     
     /**

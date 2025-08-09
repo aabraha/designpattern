@@ -1,24 +1,39 @@
 package com.observer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Subject interface - defines the contract for subjects that can be observed
+ * Abstract Subject class - provides common implementation for subjects that can be observed
  * Maintains a list of observers and notifies them of changes
  */
-public interface Subject {
+public abstract class Subject {
+    private List<Observer> observers = new ArrayList<>();
+    
     /**
      * Register an observer to be notified of changes
      * @param observer the observer to register
      */
-    void addObserver(Observer observer);
+    public void addObserver(Observer observer) {
+        if (!observers.contains(observer)) {
+            observers.add(observer);
+        }
+    }
     
     /**
      * Unregister an observer from notifications
      * @param observer the observer to unregister
      */
-    void removeObserver(Observer observer);
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
     
     /**
      * Notify all registered observers of changes
      */
-    void notifyObservers();
+    protected void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    }
 } 
